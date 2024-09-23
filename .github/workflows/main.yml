@@ -27,6 +27,8 @@ jobs:
         python main.py | tee output.txt
 
     - name: Commit and push output.txt
+      permissions:
+        contents: write
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
