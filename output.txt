@@ -1,4 +1,43 @@
-Elapsed time for lindi precomputed: 1.68 s
-Elapsed time for remfile: 3.38 s
-Elapsed time for lindi: 3.38 s
-Elapsed time for fsspec: 15.28 s
+Trial 1 of 5
+Elapsed time for lindi precomputed: 2.3012025356292725 s
+Elapsed time for remfile: 8.411464929580688 s
+Elapsed time for lindi: 5.12898850440979 s
+Elapsed time for fsspec: 44.74486780166626 s
+
+Trial 2 of 5
+Elapsed time for lindi precomputed: 1.5222127437591553 s
+Elapsed time for remfile: 6.041094541549683 s
+Elapsed time for lindi: 4.418952941894531 s
+Elapsed time for fsspec: 35.925880670547485 s
+
+Trial 3 of 5
+Warning: LINDI file already closed.
+Warning: LINDI file already closed.
+Warning: LINDI file already closed.
+Warning: LINDI file already closed.
+Elapsed time for lindi precomputed: 1.5738615989685059 s
+Elapsed time for remfile: 6.173847436904907 s
+Elapsed time for lindi: 4.436263084411621 s
+Elapsed time for fsspec: 37.57400822639465 s
+
+Trial 4 of 5
+Elapsed time for lindi precomputed: 1.5593295097351074 s
+Elapsed time for remfile: 5.981118440628052 s
+Elapsed time for lindi: 4.391996145248413 s
+Elapsed time for fsspec: 42.452104568481445 s
+
+Trial 5 of 5
+Elapsed time for lindi precomputed: 1.511951208114624 s
+Elapsed time for remfile: 6.341296911239624 s
+Warning: LINDI file already closed.
+Warning: LINDI file already closed.
+Warning: LINDI file already closed.
+Warning: LINDI file already closed.
+Warning: LINDI file already closed.
+Elapsed time for lindi: 4.3420679569244385 s
+Elapsed time for fsspec: 36.0261812210083 s
+
+Average elapsed time for lindi precomputed: 1.693711519241333 s
+Average elapsed time for remfile: 6.5897644519805905 s
+Average elapsed time for lindi: 4.543653726577759 s
+Average elapsed time for fsspec: 0.0 s
