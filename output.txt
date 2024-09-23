@@ -1,0 +1,4 @@
+Elapsed time for lindi precomputed: 1.68 s
+Elapsed time for remfile: 3.38 s
+Elapsed time for lindi: 3.38 s
+Elapsed time for fsspec: 15.28 s
