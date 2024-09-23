@@ -1,9 +1,6 @@
 name: Run main.py and save output.txt
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -27,9 +24,11 @@ jobs:
 
     - name: Run main.py and save output
       run: |
-        python main.py > output.txt
+        python main.py | tee output.txt
 
     - name: Commit and push output.txt
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --local user.name "github-actions[bot]"
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
