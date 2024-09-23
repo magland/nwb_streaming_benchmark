@@ -83,6 +83,7 @@ for trial_num in range(1, num_trials + 1):
     nwbfile, io = stream_nwbfile_fsspec(asset_url)
     io.close()
     elapsed = time.time() - timer
+    elapsed_times_fsspec.append(elapsed)
     print(f"Elapsed time for fsspec: {elapsed} s")
 
     print('')
