@@ -48,22 +48,51 @@ with DandiAPIClient() as client:
     asset_id = asset_url.split("/")[5]
     lindi_precomputed_url = f'https://lindi.neurosift.org/dandi/dandisets/{DANDISET_ID}/assets/{asset_id}/nwb.lindi.json'
 
-timer = time.time()
-nwbfile, io = stream_nwbfile_lindi_precomputed(lindi_precomputed_url)
-io.close()
-print(f"Elapsed time for lindi precomputed: {time.time() - timer:.2f} s")
+num_trials = 5
 
-timer = time.time()
-nwbfile, io = stream_nwbfile_remfile(asset_url)
-io.close()
-print(f"Elapsed time for remfile: {time.time() - timer:.2f} s")
+elapsed_times_lindi_precomputed = []
+elapsed_times_remfile = []
+elapsed_times_lindi = []
+elapsed_times_fsspec = []
 
-timer = time.time()
-nwbfile, io = stream_nwbfile_lindi(asset_url)
-io.close()
-print(f"Elapsed time for lindi: {time.time() - timer:.2f} s")
+for trial_num in range(1, num_trials + 1):
+    print(f"Trial {trial_num} of {num_trials}")
 
-timer = time.time()
-nwbfile, io = stream_nwbfile_fsspec(asset_url)
-io.close()
-print(f"Elapsed time for fsspec: {time.time() - timer:.2f} s")
+    timer = time.time()
+    nwbfile, io = stream_nwbfile_lindi_precomputed(lindi_precomputed_url)
+    io.close()
+    elapsed = time.time() - timer
+    print(f"Elapsed time for lindi precomputed: {elapsed} s")
+    elapsed_times_lindi_precomputed.append(elapsed)
+
+    timer = time.time()
+    nwbfile, io = stream_nwbfile_remfile(asset_url)
+    io.close()
+    elapsed = time.time() - timer
+    print(f"Elapsed time for remfile: {elapsed} s")
+    elapsed_times_remfile.append(elapsed)
+
+    timer = time.time()
+    nwbfile, io = stream_nwbfile_lindi(asset_url)
+    io.close()
+    elapsed = time.time() - timer
+    print(f"Elapsed time for lindi: {elapsed} s")
+    elapsed_times_lindi.append(elapsed)
+
+    timer = time.time()
+    nwbfile, io = stream_nwbfile_fsspec(asset_url)
+    io.close()
+    elapsed = time.time() - timer
+    print(f"Elapsed time for fsspec: {elapsed} s")
+
+    print('')
+
+average_elapsed_time_lindi_precomputed = sum(elapsed_times_lindi_precomputed) / num_trials
+average_elapsed_time_remfile = sum(elapsed_times_remfile) / num_trials
+average_elapsed_time_lindi = sum(elapsed_times_lindi) / num_trials
+average_elapsed_time_fsspec = sum(elapsed_times_fsspec) / num_trials
+
+print(f"Average elapsed time for lindi precomputed: {average_elapsed_time_lindi_precomputed} s")
+print(f"Average elapsed time for remfile: {average_elapsed_time_remfile} s")
+print(f"Average elapsed time for lindi: {average_elapsed_time_lindi} s")
+print(f"Average elapsed time for fsspec: {average_elapsed_time_fsspec} s")
